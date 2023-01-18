@@ -1,0 +1,87 @@
+.movieCard {
+    display: grid;
+    gap: 0.5rem;
+    color: #ddd;
+    text-align: center;
+    border: 2px solid var(--dark-color);
+    border-radius: 7px;
+    background-color: var(--dark-color);
+    padding-bottom: 0.5rem;
+    width: 200px;
+    &:hover {
+        border: 2px solid var(--primary-color);
+    }
+    &__image {
+        height: 280px;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        background-color: azure;
+    }
+    &:hover &__image {
+        opacity: 0.3;
+    }
+    &__options {
+        display: inline-block;
+        position: relative;
+    }
+    &__btnContainer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 2rem;
+        align-items: center;
+        opacity: 0;
+        padding: 0 10%;
+        button {
+            font-size: 14px;
+        }
+    }
+    &:hover &__btnContainer {
+        opacity: 1;
+    }
+    &__showDetails{
+        grid-column: 1/-1;
+        i {
+            font-size: 2rem;
+            color: rgb(221, 221, 221, 0.7);    
+            cursor: pointer;
+            transition: all .2s;
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+    }
+    &__btn {
+        width: 2.5rem;
+        color: var(--dark-color);
+        border-radius: 7px;
+        background-color: rgb(221, 221, 221, 0.7);
+        padding: 0.5rem;
+        &--edit:hover{
+            color: #ddd;
+            background-color: var(--primary-color);
+        }
+        &--delete:hover{
+            color: #ddd;
+            background-color: var(--danger-color);
+        }
+    }
+    &__name {
+        display: grid;
+        align-items: center;
+        height: 50px;
+        font-size: 16px;
+        padding: 0 5px;
+    }
+    &__details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        font-size: .7rem;
+        &__rating {
+            border-right: 2px solid #ddd;
+        }    
+    }
+}

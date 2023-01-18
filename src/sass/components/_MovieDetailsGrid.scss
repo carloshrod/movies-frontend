@@ -1,0 +1,86 @@
+.movieDetails {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    h2 {
+        text-shadow: 1px 1px 2px var(--primary-color);
+    }
+    &__image {
+        width: 80%;
+        max-width: 350px;
+        height: 80%;
+        max-height: 500px;
+        margin: 1rem;
+        border-radius: 5px;
+        box-shadow: 0 0 2px #ddd;
+    }
+    &__info {
+        width: 90%;
+        max-width: 500px;
+        height: auto;
+        margin: 1rem;
+        &__firstRow {
+            display: flex;
+            gap: 1rem;
+            font-size: .7rem;
+            margin: 1rem 0;
+            :not(:last-child)::after {
+                    content: "|";
+                    padding-left: 1rem;
+                    color: var(--primary-color);
+                }
+        }
+        &__director, &__cast, &__trailer, &__sinopsis {
+            margin-bottom: 1rem;
+            font-size: .9rem;
+            text-align: justify;
+            span {
+                color: rgb(221, 221, 221, 0.7);
+                padding-right: 1rem;
+                font-weight: bolder;
+                &::after {
+                    content: ":";
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1026px) {
+        height: auto;
+        gap: 0;
+        &__image {
+            width: 80%;
+            max-width: 350px;
+            height: 80%;
+            max-height: 500px;
+        }    
+        &__info {
+            max-width: 750px;
+        }
+    }
+    @media (min-width: 1367px) {
+        font-size: 2rem;
+        gap: 4rem;
+        &__image {
+            width: 80%;
+            max-width: 550px;
+            height: 80%;
+            max-height: 800px;
+        }
+        &__info {
+            display: grid;
+            gap: 1rem; 
+        }
+    }
+    // @media ((min-width: 820px) and (min-height: 1180px)) or ((min-width: 768px) and (min-height: 1024px)) {
+    //     &__image {
+    //         width: 80%;
+    //         max-width: 500px;
+    //         height: 80%;
+    //         max-height: 700px;
+    //     }    
+    // }
+}

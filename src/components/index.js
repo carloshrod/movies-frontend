@@ -1,0 +1,11 @@
+export { default as Navbar } from './Navbar';
+export { default as Container } from './Container';
+export { default as MoviesGrid } from './MoviesGrid';
+export { default as MovieCard } from './MovieCard';
+export { default as MovieDetails } from './MovieDetails';
+export { default as Modal } from './Modal';
+export { default as MovieForm } from './MovieForm';
+export { default as Input } from './Input';
+export { default as Loader } from './Loader';
+export { default as NoData } from './NoData';
+export { default as Search } from './Search';

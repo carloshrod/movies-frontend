@@ -1,0 +1,26 @@
+.noData {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    span {
+        position: relative;
+        top: -120px;
+        font-size: 3rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 5px;
+        padding: 2rem 3rem;
+        em {
+            color: var(--primary-color);
+        }        
+    }
+    &--movie {
+        span {
+            top: 0;
+        }
+    }
+    &--error {
+        border: 2px solid var(--danger-color) !important;
+    }
+}

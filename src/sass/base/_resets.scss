@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #ddd;
+    text-decoration: none;
+}
+
+.swal2-popup {
+    border: 1px solid var(--primary-color);
+    .swal2-icon.swal2-warning {
+        font-size: .7rem !important;
+        color: var(--danger-color);
+        border-color: var(--danger-color);
+    }
+    .swal2-icon.swal2-question {
+        font-size: .7rem !important;
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+    button {
+        font-size: .9rem !important;
+        border-radius: .6rem !important;
+        padding: 0.5rem 1rem !important;
+    }
+}

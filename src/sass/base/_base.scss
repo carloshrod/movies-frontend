@@ -1,0 +1,99 @@
+html,
+body {
+    font-family: var(--font-poppins);
+    color: #ddd;
+    background-color: var(--bg-color);
+}
+
+input,
+textarea,
+select {
+    font-family: var(--font-poppins);
+    color: #ddd;
+    border: 1px solid #ddd;
+    background-color: var(--dark-color);
+    padding: .4rem .7rem;
+    resize: none;
+    outline: none;
+    border-radius: .6em;
+    &:focus {
+        color: var(--primary-color);
+        box-shadow: 0 0 8px var(--primary-color);
+        caret-color: #ddd;
+        transition: .1s;
+        transition-property: box-shadow;
+    }
+}
+
+input { 
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px var(--dark-color) inset !important;
+        -webkit-text-fill-color: #ddd !important;
+        &:focus {
+            -webkit-box-shadow: 0 0 8px var(--primary-color), 0 0 0 30px var(--dark-color) inset !important;
+            -webkit-text-fill-color: var(--primary-color) !important;
+            -webkit-caret-color: #ddd !important;
+        }    
+    }
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input[type="date"] {
+    &:required:invalid {
+        color: grey;
+    }
+}
+
+input::-webkit-datetime-edit-day-field:focus,
+input::-webkit-datetime-edit-month-field:focus,
+input::-webkit-datetime-edit-year-field:focus {
+    background-color: var(--dark-color);
+    color: var(--primary-color);
+    outline: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+input, select {
+    height: 36.78px;
+}
+
+select {
+    cursor: pointer;
+    &:required:invalid {
+        color: grey;
+    }
+    option[value=""][disabled] {
+        display: none;
+    }
+    option {
+        color: #ddd;
+    }    
+}
+
+button {
+    border: none;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 400;
+    font-family: var(--font-poppins), sans-serif;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    &:hover {
+        opacity: 0.9;
+    }
+    &:active {
+        transform: scale(0.98)
+    }
+    &:disabled {
+        background-color: grey;
+        transform: none;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,9 @@
+.backButton {
+    position: absolute;
+    top: 50%;
+    left: .2rem;
+    padding: 1rem;
+    &:hover {
+        color: var(--primary-color);
+    }
+}

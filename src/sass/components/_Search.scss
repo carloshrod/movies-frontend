@@ -1,0 +1,27 @@
+.search {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    padding: 1.5rem;
+    form {
+        position: relative;
+        input {
+            border-radius: 15px;
+            border: 1px solid #ddd;
+            background-color: var(--background-color);
+            padding: 0 2.5em 0 1.2em;
+        }
+        button{
+            position: absolute;
+            right: 0;
+            background-color: var(--background-color);
+            padding: .55em .7em .55em .5em;
+            border-radius: 15px;
+        }
+    }
+    &__label {
+        color: #505050;
+        font-size: 12px;
+        padding-top: 0.5rem;
+    }
+}
