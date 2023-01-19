@@ -4,7 +4,6 @@ import { PuffLoader, RingLoader } from 'react-spinners';
 
 function Movies() {
     const { movies, isLoading, isSending } = useMoviesContext();
-    console.log(movies);
 
     return (
         <>
@@ -16,7 +15,7 @@ function Movies() {
                 </Loader>
                 :
                 <>
-                    {!movies
+                    {!movies || movies.length < 1
                         ?
                         <NoData />
                         :

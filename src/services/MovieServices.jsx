@@ -111,8 +111,11 @@ export const MovieServices = () => {
                 }
             } else fetchMovies();
         } catch (error) {
-            toast.error(error.response?.data?.msg || error.message);
-            console.log(error);
+            setNoDataMsg(
+                <span className="noData--error">Oops, there's an error.<br />
+                    Please try it later!</span>
+            )
+            console.error(error);
         } finally {
             setTimeout(() => {
                 setIsLoading(false);
