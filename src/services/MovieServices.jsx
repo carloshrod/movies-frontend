@@ -83,15 +83,13 @@ export const MovieServices = () => {
             setIsLoading(true);
             window.scroll({ top: 0, behavior: 'smooth' });
             const res = await axios.get(API_URI + movieId);
-            setMovie(res.data);
-            if (res.data.length === 0) {
-                setNoDataMsg(
-                    <span className="noData--error">Oops, there's an error.<br />
-                        Please try it later!</span>
-                )    
-            }
+            const { movie } = res.data;
+            setMovie(movie);
         } catch (error) {
-            toast.error(error.message, { toastId: "error" });
+            setNoDataMsg(
+                <span className="noData--error">Oops, there's an error.<br />
+                    Please try it later!</span>
+            )
             console.error(error);
         } finally {
             setTimeout(() => {
@@ -106,8 +104,9 @@ export const MovieServices = () => {
             setIsLoading(true);
             if (title) {
                 const res = await axios.get(API_URI + "search/" + title);
-                setMovies(res.data);
-                if (res.data.length === 0) {
+                const { foundMovies } = res.data;
+                setMovies(foundMovies);
+                if (foundMovies.length === 0) {
                     setNoDataMsg(<span>No results for <em>{title}</em> !</span>)
                 }
             } else fetchMovies();

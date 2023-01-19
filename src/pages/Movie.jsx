@@ -24,7 +24,7 @@ function Movie() {
     return (
         <>
             <BackButton />
-            {movie?.length < 1
+            {!movie
                 ?
                 <NoData noDataClass="noData--movie" />
                 :

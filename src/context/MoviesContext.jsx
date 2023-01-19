@@ -20,12 +20,12 @@ const MoviesProvider = ({ children }) => {
     const fetchMovies = async () => {
         try {
             const res = await axios.get(API_URI);
-            setMovies(res.data);
-            if (res.data) {
+            const { movies } = res.data;
+            setMovies(movies);
+            if (movies.length === 0) {
                 setNoDataMsg(<span>Start to add movies!</span>);
             }
         } catch (error) {
-            toast.error(error.message, { toastId: "error" });
             setNoDataMsg(
                 <span className="noData--error">Oops, there's an error.<br />
                     Please try it later!</span>
