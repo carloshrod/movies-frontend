@@ -17,15 +17,15 @@ export const validateCreateMovie = (form, file, movies) => {
         return false;
     }
 
-    const existingTitle = movies.filter((movie) => movie.title === form.title)
-    const existingTrailer = movies.filter((movie) => movie.trailer === form.trailer)
+    const existingTitle = movies?.filter((movie) => movie.title === form.title)
+    const existingTrailer = movies?.filter((movie) => movie.trailer === form.trailer)
 
-    if (existingTitle.length > 0) {
+    if (existingTitle?.length > 0) {
         toastValidate("There's already a movie with this title!")
         return false
     }
 
-    if (existingTrailer.length > 0) {
+    if (existingTrailer?.length > 0) {
         toastValidate("There's already a movie with this trailer!")
         return false
     }
@@ -35,17 +35,17 @@ export const validateCreateMovie = (form, file, movies) => {
 
 export const validateEditMovie = (form, movieToEdit, movies) => {
     if ((movieToEdit.title !== form.title) || (movieToEdit.trailer !== form.trailer)) {
-        const existingTitle = movies.filter((movie) => movie.title === form.title)
-        const existingTrailer = movies.filter((movie) => movie.trailer === form.trailer)
+        const existingTitle = movies?.filter((movie) => movie.title === form.title)
+        const existingTrailer = movies?.filter((movie) => movie.trailer === form.trailer)
 
-        if (existingTitle.length > 0) {
+        if (existingTitle?.length > 0) {
             if (existingTitle[0].title !== movieToEdit.title) {
                 toastValidate("There's already a movie with this title!")
                 return false
             }
         }
 
-        if (existingTrailer.length > 0) {
+        if (existingTrailer?.length > 0) {
             if (existingTrailer[0].trailer !== movieToEdit.trailer) {
                 toastValidate("There's already a movie with this trailer!")
                 return false

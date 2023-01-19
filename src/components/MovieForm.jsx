@@ -3,7 +3,7 @@ import { useForm } from '../hooks/useForm';
 import { Input, Loader } from './';
 import { RingLoader } from 'react-spinners';
 import { inputProps, textAreaProps } from '../utils';
-import { validateForm } from '../utils/validateForm';
+import { validateForm } from '../utils/validateMovie';
 import { useEffect } from 'react';
 
 const initialForm = {

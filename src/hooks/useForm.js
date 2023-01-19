@@ -3,7 +3,7 @@ import DEFAULT_IMAGE from '../assets/default-img.png';
 import { useMoviesContext } from "../context/MoviesContext";
 import { MovieServices } from "../services/MovieServices";
 import { formDataCreateMovie, formDataUpdateMovie } from "../utils";
-import { validateCreateMovie, validateEditMovie, validateForm } from "../utils/validateForm";
+import { validateCreateMovie, validateEditMovie } from "../utils/validateMovie";
 
 export const useForm = (initialForm) => {
     const [form, setForm] = useState(initialForm);
