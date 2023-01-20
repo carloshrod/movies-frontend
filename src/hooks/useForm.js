@@ -3,14 +3,14 @@ import DEFAULT_IMAGE from '../assets/default-img.png';
 import { useMoviesContext } from "../context/MoviesContext";
 import { MovieServices } from "../services/MovieServices";
 import { formDataCreateMovie, formDataUpdateMovie } from "../utils";
-import { validateCreateMovie, validateEditMovie } from "../utils/validateMovie";
+import { validateCreateMovie, validateEditMovie, validateForm } from "../utils/validateMovie";
 
 export const useForm = (initialForm) => {
     const [form, setForm] = useState(initialForm);
     const [file, setFile] = useState("");
     const [pathImage, setPathImage] = useState(DEFAULT_IMAGE);
     const { createMovie, updateMovie } = MovieServices();
-    const { movies, movieToEdit, setMovieToEdit } = useMoviesContext();
+    const { movies, movieToEdit, setMovieToEdit, setIsFormOk } = useMoviesContext();
 
     useEffect(() => {
         if (movieToEdit?.id) {
@@ -21,6 +21,11 @@ export const useForm = (initialForm) => {
             setForm(initialForm);
         }
     }, [movieToEdit, initialForm]);
+
+    useEffect(() => {
+        const isOk = validateForm(form);
+        setIsFormOk(isOk);
+    }, [form])
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -46,8 +51,9 @@ export const useForm = (initialForm) => {
 
     const handleReset = () => {
         setTimeout(() => {
-            setPathImage(DEFAULT_IMAGE);
             setForm(initialForm);
+            setFile("");
+            setPathImage(DEFAULT_IMAGE);
             setMovieToEdit(null);
         }, 500);
         document.body.classList.remove("hideScroll");

@@ -1,13 +1,21 @@
 import { toast } from "react-toastify";
 
-const toastValidate = (msg) => toast.error(msg, { toastId: "validate"});
+const toastValidate = (msg) => toast.error(msg, { toastId: "validate" });
+
+const regexTitle = /^[\s\S]{0,50}$/;
+const regexDuration = /^([1-9][0-9]{0,2})$/;
+const regexUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\s+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\s+.~#?&=]*)/;
+const regexDirector = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü,\s-]{0,100}$/;
 
 export const validateForm = (form) => {
-    if (!form.title || !form.language || !form.rating ||
-        !form.duration || !form.release_date || !form.trailer ||
-        !form.director || !form.sinopsis || !form.casting) {
+    if ((!form.title || !regexTitle.test(form.title)) || !form.language ||
+        !form.rating || (!form.duration || !regexDuration.test(form.duration)) ||
+        !form.release_date || (!form.trailer || !regexUrl.test(form.trailer)) ||
+        (!form.director || !regexDirector.test(form.director)) ||
+        !form.sinopsis || !form.casting) {
         return false;
     }
+
     return true;
 }
 

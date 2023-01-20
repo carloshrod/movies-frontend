@@ -2,19 +2,14 @@ import { useEffect, useState } from "react";
 import { useMoviesContext } from "../context/MoviesContext";
 import { inputClasses, languages, ratings } from "../utils";
 
-function Input({ id, value, name, label, type, errormessage, onChange, validateform, ...inputProps }) {
+function Input({ id, value, name, label, type, errormessage, onChange, ...inputProps }) {
     const [focused, setFocused] = useState(false);
     const options = name === "language" ? languages : ratings;
     const { show } = useMoviesContext();
 
     const handleFocus = () => {
         setFocused(true);
-        validateform();
     };
-
-    const handleKeyUp = () => {
-        validateform();
-    }
 
     useEffect(() => {
         setFocused(false);
@@ -38,7 +33,6 @@ function Input({ id, value, name, label, type, errormessage, onChange, validatef
                             onChange={onChange}
                             onBlur={handleFocus}
                             focused={focused.toString()}
-                            onKeyUp={handleKeyUp}
                             required
                         />
                         :
@@ -51,7 +45,6 @@ function Input({ id, value, name, label, type, errormessage, onChange, validatef
                             onChange={onChange}
                             onBlur={handleFocus}
                             focused={focused.toString()}
-                            onKeyUp={handleKeyUp}
                             required
                         />
                     }
@@ -66,7 +59,6 @@ function Input({ id, value, name, label, type, errormessage, onChange, validatef
                         value={value}
                         onChange={onChange}
                         onBlur={handleFocus}
-                        onKeyUp={handleKeyUp}
                         focused={focused.toString()}
                         required
                     >

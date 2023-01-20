@@ -37,10 +37,6 @@ function MovieForm() {
         document.body.classList.remove("hideScroll");
     };
 
-    const handleValidateForm = () => {
-        setIsFormOk(validateForm(form));
-    }
-
     return (
         <section className="main">
             <h3 className='main__title'>{formTitle} Movie</h3>
@@ -69,7 +65,6 @@ function MovieForm() {
                                 {...input}
                                 value={form[input.name]}
                                 onChange={handleInputChange}
-                                validateform={handleValidateForm}
                             />
                         ))}
                     </div>
@@ -81,7 +76,6 @@ function MovieForm() {
                             {...input}
                             value={form[input.name]}
                             onChange={handleInputChange}
-                            validateform={handleValidateForm}
                         />
                     ))}
                 </div>

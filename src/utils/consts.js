@@ -53,7 +53,7 @@ export const inputProps = [
         label: "Duration(min)",
         type: "text",
         errormessage: "This field must be a number from 1 to 999!",
-        pattern: "([1-9]|[1-9][0-9]|[1-9][0-9][0-9])",
+        pattern: "^([1-9][0-9]{0,2})$",
         required: true,
     },
     {
@@ -61,7 +61,7 @@ export const inputProps = [
         name: "trailer",
         label: "Trailer URL",
         type: "text",
-        errormessage: "Please enter a valid URL! Ex: https://www.example.com",
+        errormessage: "Please enter a valid URL! Ex: https://www.example.com/example",
         pattern: "https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\\s+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\s+.~#?&=]*)",
         required: true,
     },
