@@ -88,7 +88,7 @@ export const textAreaProps = [
     {
         id: "idCasting",
         name: "casting",
-        label: "Casting",
+        label: "Cast",
         type: "textArea",
         errormessage: "Field required!",
         required: true,

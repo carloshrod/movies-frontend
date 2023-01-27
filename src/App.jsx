@@ -1,6 +1,6 @@
 import './Styles.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navbar, Container, Modal } from './components';
+import { Navbar, Container, Modal, BackToTop } from './components';
 import { Movies, Movie } from './pages';
 import { MoviesProvider } from './context/MoviesContext';
 import { ToastContainer, Flip } from 'react-toastify';
@@ -19,6 +19,7 @@ function App() {
         </Container>
         <Modal />
         <ToastContainer position="bottom-right" theme="dark" newestOnTop transition={Flip} />
+        <BackToTop/>
       </Router>
     </MoviesProvider>
   )

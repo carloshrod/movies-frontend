@@ -9,3 +9,4 @@ export { default as Input } from './Input';
 export { default as Loader } from './Loader';
 export { default as NoData } from './NoData';
 export { default as Search } from './Search';
+export { default as BackToTop } from './BackToTop';

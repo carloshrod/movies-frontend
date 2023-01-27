@@ -1,0 +1,21 @@
+.backToTop {
+    display: flex;
+    position: fixed;
+    right: 50%;
+    bottom: .3rem;
+    width: 2rem;
+    height: 2rem;
+    margin-right: -1rem;
+    z-index: 99;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity .5s;
+    color: var(--primary-color);
+    i {
+        line-height: 0;
+        margin: auto;
+    }
+    &.active {
+        opacity: 1;
+    }
+}
