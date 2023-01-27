@@ -18,10 +18,12 @@ function Navbar() {
 
     return (
         <header className="navbar">
-            <Link to="/">
-                <span className="navbar__logo" onClick={toTop}>
-                    MOVIES <i className="fa-solid fa-film" />
-                </span>
+            <Link to="/" className="navbar__logo" onClick={toTop}>
+                <img src="/movies-logo.png" alt="logo"/>
+                <div>
+                    <span>CHRod</span>
+                    <span>MOVIES</span>
+                </div>
             </Link>
             <span className="navbar__link" onClick={showModal}>
                 Add movie

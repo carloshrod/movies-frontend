@@ -10,9 +10,23 @@
     z-index: 1;
     box-shadow: 0 0 1px 1px var(--bg-color);
     &__logo {
-        font-size: 2rem;
-        padding: 0 0.5rem;
-        text-shadow: 1px 1px 3px var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: .2rem;
+        img {
+            height: 60px;
+        }
+        div {
+            color: var(--primary-color);
+            font-size: 1rem;
+            :first-child {
+                color: #ddd;
+                font-size: 2.5rem;
+            }
+            @media (max-width: 430px) {
+                display: none;
+            }
+        }
         &:active {
             zoom: 0.99;
         }
