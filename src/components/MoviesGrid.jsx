@@ -1,17 +1,21 @@
 import { MovieCard } from './';
 import { useMoviesContext } from '../context/MoviesContext';
+import { AnimatePresence } from "framer-motion"
 
 function MoviesGrid() {
     const { movies } = useMoviesContext();
 
     return (
         <ul className="moviesGrid">
-            {movies?.map(movie => (
-                <MovieCard
-                    key={movie.id}
-                    movie={movie}
-                />
-            ))}
+            <AnimatePresence>
+                {movies?.map((movie, index) => (
+                    <MovieCard
+                        key={movie.id}
+                        movie={movie}
+                        index={index}
+                    />
+                ))}
+            </AnimatePresence>
         </ul>
     )
 }

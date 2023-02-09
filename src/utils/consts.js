@@ -62,7 +62,7 @@ export const inputProps = [
         label: "Trailer URL",
         type: "text",
         errormessage: "Please enter a valid URL! Ex: https://www.example.com/example",
-        pattern: "https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\\s+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\s+.~#?&=]*)",
+        pattern: "^https?:\/\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\/=]*)$",
         required: true,
     },
     {
@@ -94,3 +94,28 @@ export const textAreaProps = [
         required: true,
     }
 ];
+
+export const variants = {
+    scaleOut: {
+        opacity: 0,
+        scale: 0,
+    },
+    scaleIn: {
+        opacity: 1,
+        scale: 1,
+        transition: {
+            duration: 1,
+            type: 'spring'
+        }
+    },
+    slideOutTop: {
+        y: '-100vh',
+    },
+    slideInTop: {
+        y: '0',
+        transition: {
+            duration: 1,
+            type: 'tween'
+        }
+    }
+}

@@ -4,7 +4,7 @@ const toastValidate = (msg) => toast.error(msg, { toastId: "validate" });
 
 const regexTitle = /^[\s\S]{0,50}$/;
 const regexDuration = /^([1-9][0-9]{0,2})$/;
-const regexUrl = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\s+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\s+.~#?&=]*)/;
+const regexUrl = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
 const regexDirector = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü,\s-]{0,100}$/;
 
 export const validateForm = (form) => {

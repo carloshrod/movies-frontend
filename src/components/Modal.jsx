@@ -7,7 +7,7 @@ function Modal() {
 
     return (
         <div className={`modal ${show ? "modal--show" : ""}`}>
-            <div className="modal__container">
+            <div className={`modal__container ${show ? "modal__container--show" : ""}`}>
                 <MovieForm />
             </div>
         </div>

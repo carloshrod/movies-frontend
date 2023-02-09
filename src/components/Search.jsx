@@ -1,6 +1,8 @@
 import { useMoviesContext } from '../context/MoviesContext';
 import { useForm } from '../hooks/useForm';
 import { MovieServices } from '../services/MovieServices';
+import { motion } from "framer-motion";
+import { variants } from '../utils';
 
 const initialForm = { title: "" };
 
@@ -16,7 +18,12 @@ function Search() {
     }
 
     return (
-        <div className="search">
+        <motion.div
+            className="search"
+            initial='slideOutTop'
+            animate='slideInTop'
+            variants={variants}
+        >
             <form onSubmit={handleSubmit}>
                 <input
                     className="form-control"
@@ -29,7 +36,7 @@ function Search() {
             <label className="search__label">
                 {range} {range === 1 ? "result" : "results"}
             </label>
-        </div>
+        </motion.div>
     )
 }
 

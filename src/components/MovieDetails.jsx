@@ -1,4 +1,6 @@
 import { useMoviesContext } from '../context/MoviesContext';
+import { motion } from "framer-motion";
+import { variants } from '../utils';
 
 function MovieDetails() {
     const { movie } = useMoviesContext();
@@ -7,12 +9,20 @@ function MovieDetails() {
 
     return (
         <section className="movieDetails">
-            <img
+            <motion.img
                 className="movieDetails__image"
                 src={poster_url}
                 alt={title}
+                initial="scaleOut"
+                animate="scaleIn"
+                variants={variants}
             />
-            <div className="movieDetails__info">
+            <motion.div
+                className="movieDetails__info"
+                initial="scaleOut"
+                animate="scaleIn"
+                variants={variants}
+            >
                 <h2>{title}</h2>
                 <div className="movieDetails__info__firstRow">
                     <span>{release_date}</span>
@@ -35,7 +45,7 @@ function MovieDetails() {
                 <div className="movieDetails__info__sinopsis">
                     <span>Sinopsis</span>{sinopsis}
                 </div>
-            </div>
+            </motion.div>
         </section>
     )
 }

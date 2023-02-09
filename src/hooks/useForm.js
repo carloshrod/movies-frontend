@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import DEFAULT_IMAGE from '../assets/default-img.png';
 import { useMoviesContext } from "../context/MoviesContext";
 import { MovieServices } from "../services/MovieServices";
@@ -11,6 +12,7 @@ export const useForm = (initialForm) => {
     const [pathImage, setPathImage] = useState(DEFAULT_IMAGE);
     const { createMovie, updateMovie } = MovieServices();
     const { movies, movieToEdit, setMovieToEdit, setIsFormOk } = useMoviesContext();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (movieToEdit?.id) {
@@ -67,6 +69,7 @@ export const useForm = (initialForm) => {
                 formDataCreateMovie(formData, form, file);
                 await createMovie(formData);
                 handleReset();
+                navigate("/");
             }
         } else {
             if (validateEditMovie(form, movieToEdit, movies)) {

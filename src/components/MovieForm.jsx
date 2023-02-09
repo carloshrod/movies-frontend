@@ -19,7 +19,7 @@ const initialForm = {
 }
 
 function MovieForm() {
-    const { movieToEdit, isSending, setShow, isFormOk, setIsFormOk } = useMoviesContext();
+    const { movieToEdit, setShow, isFormOk, setIsFormOk } = useMoviesContext();
     const { form, pathImage, handleFileChange, handleInputChange,
         handleReset, handleSubmit } = useForm(initialForm);
     const formTitle = form?.id ? "Edit" : "Create";
@@ -88,11 +88,6 @@ function MovieForm() {
                     </button>
                 </div>
             </form>
-            {isSending
-                &&
-                <Loader loaderClass="loader--form">
-                    <RingLoader color="#20cb84" size="80px" />
-                </Loader>}
         </section>
     )
 }

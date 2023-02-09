@@ -3,7 +3,7 @@ import { useMoviesContext } from '../context/MoviesContext';
 import { PuffLoader, RingLoader } from 'react-spinners';
 
 function Movies() {
-    const { movies, isLoading, isSending } = useMoviesContext();
+    const { movies, isLoading, isSending, show } = useMoviesContext();
 
     return (
         <>
@@ -25,7 +25,7 @@ function Movies() {
             }
             {isSending
                 &&
-                <Loader>
+                <Loader loaderClass={`${show ? "loader--modal" : ""}`}>
                     <RingLoader color="#20cb84" size="80px" />
                 </Loader>
             }

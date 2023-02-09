@@ -2,6 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useMoviesContext } from '../context/MoviesContext';
 import { MovieServices } from '../services/MovieServices';
+import { motion } from "framer-motion"
+import { variants } from '../utils';
 
 function MovieCard({ movie }) {
     let { id, title, rating, release_date, poster_url } = movie || {};
@@ -28,7 +30,15 @@ function MovieCard({ movie }) {
     }
 
     return (
-        <li className="movieCard">
+        <motion.li
+            className="movieCard"
+            initial="scaleOut"
+            animate="scaleIn"
+            exit="scaleOut"
+            variants={variants}
+            transition={{ duration: .5 }}
+            layoutId={id}
+        >
             <div className="movieCard__options">
                 <img
                     className="movieCard__image"
@@ -60,7 +70,7 @@ function MovieCard({ movie }) {
                 <span className="movieCard__details__rating">{rating}</span>
                 <span>{release_date}</span>
             </div>
-        </li>
+        </motion.li>
     )
 }
 
