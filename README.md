@@ -19,6 +19,7 @@ Application developed with React, with all CRUD functionalities. It used the Rea
 * React-toastify
 * Sweetalert2
 * React-Spinners
+* Framer-Motion
 
 ## Run app
 1. Clone or download the project on your computer.
