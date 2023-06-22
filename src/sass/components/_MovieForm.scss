@@ -7,27 +7,33 @@
     overflow: hidden;
     padding: 1.5em;
     border-radius: 1em;
+
     &__title {
         text-align: center;
         font-size: 1.5em;
     }
+
     &__movieForm {
         &__topContainer {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 0 1.5em;
             padding: 1.5em 0 1.7rem 0;
+
             &__inputFileContainer {
                 display: grid;
                 justify-items: center;
                 align-items: center;
                 position: relative;
+
                 &:hover img {
                     opacity: 0.5;
                 }
+
                 &:hover i {
                     opacity: 0.8;
                 }
+
                 img {
                     height: 280px;
                     width: 90%;
@@ -35,6 +41,7 @@
                     background-color: azure;
                     border-radius: 5px;
                 }
+
                 label {
                     position: absolute;
                     height: 100%;
@@ -44,6 +51,7 @@
                     display: inline-block;
                     cursor: pointer;
                 }
+
                 i {
                     font-size: 2rem;
                     position: absolute;
@@ -55,6 +63,7 @@
                     opacity: 0;
                 }
             }
+
             &__inputsContainer {
                 display: flex;
                 justify-content: space-between;
@@ -62,116 +71,141 @@
                 gap: 1.7rem 0;
                 max-width: 300px;
                 margin: auto;
+
                 .largeInput {
                     display: grid;
                     width: 100%;
                     max-width: 300px;
-                    position: relative;            
+                    position: relative;
+
                     input {
                         width: 100%;
                     }
+
                     label {
                         @include mixins.inputLabel;
                     }
                 }
+
                 .smallInput {
                     display: flex;
                     flex-wrap: wrap;
                     width: calc(60% - 1.5em);
                     max-width: calc(180px - 1.5em);
-                    position: relative;            
+                    position: relative;
+
                     input,
                     select {
                         width: 100%;
                     }
+
                     label {
                         @include mixins.inputLabel;
                     }
                 }
+
                 .xSmallInput {
                     display: flex;
                     flex-wrap: wrap;
                     width: 40%;
                     max-width: 120px;
-                    position: relative;            
+                    position: relative;
+
                     input,
                     select {
                         width: 100%;
                     }
+
                     label {
                         @include mixins.inputLabel;
                     }
                 }
+
                 @media (max-width: 400px) {
                     .smallInput {
                         width: 100%;
                         max-width: 300px;
                     }
+
                     .xSmallInput {
                         width: 100%;
                         max-width: 300px;
                     }
                 }
             }
+
             @media (max-width: 768px) {
                 display: grid;
                 grid-template-columns: 1fr;
+
                 &__inputFileContainer {
                     margin: auto;
                     padding-bottom: 1.7rem;
+
                     img {
                         width: 100%;
                     }
+
                     label {
                         top: 0;
                         left: 0;
                         height: calc(100% - 1.5em);
                         width: 100%;
                     }
+
                     i {
                         font-size: 1.2rem;
                     }
                 }
             }
         }
+
         &__bottomContainer {
             display: flex;
             gap: 1.7rem 1.5em;
             padding-bottom: 1.7rem;
+
             .textArea {
                 display: grid;
                 width: 100%;
                 max-width: 300px;
                 margin: auto;
-                position: relative;            
+                position: relative;
+
                 textarea {
                     width: 100%;
                 }
+
                 label {
                     @include mixins.inputLabel;
                 }
             }
+
             @media (max-width: 768px) {
                 flex-wrap: wrap;
             }
         }
+
         &__actionsContainer {
             display: flex;
             justify-content: space-between;
             gap: 1rem;
             padding: 0 1.5em;
+
             &--close {
                 background-color: var(--danger-color);
             }
+
             button {
                 border-radius: 5px;
                 width: 80%;
                 max-width: 100px;
                 cursor: pointer;
             }
+
             @media (max-width: 400px) {
                 justify-content: space-around;
-            }    
+            }
         }
     }
 }
@@ -182,16 +216,17 @@
     color: var(--danger-color);
     padding: 4px;
     display: none;
+
+    &--show {
+        display: block;
+    }
 }
 
-input:invalid[focused="true"] ~ span,
-select:invalid[focused="true"] ~ span,
-textarea:invalid[focused="true"] ~ span{
-    display: block;
-}
-
-input:invalid[focused="true"],
-select:invalid[focused="true"],
-textarea:invalid[focused="true"]{
+.invalid {
     box-shadow: 0 0 8px var(--danger-color);
+}
+
+.disabled {
+    background-color: #808080;
+    cursor: default !important;
 }

@@ -1,20 +1,20 @@
-import { useMoviesContext } from "../context/MoviesContext";
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion';
 import { variants } from '../utils';
+import { useGlobalContext } from '../context/GlobalContext';
 
 function NoData({ noDataClass }) {
-    const { noDataMsg } = useMoviesContext();
+	const { noDataMsg } = useGlobalContext();
 
-    return (
-        <motion.div
-            className={`noData ${noDataClass}`}
-            initial="scaleOut"
-            animate="scaleIn"
-            variants={variants}
-        >
-            {noDataMsg}
-        </motion.div>
-    )
+	return (
+		<motion.div
+			className={`noData ${noDataClass}`}
+			initial='scaleOut'
+			animate='scaleIn'
+			variants={variants}
+		>
+			{noDataMsg}
+		</motion.div>
+	);
 }
 
 export default NoData;
