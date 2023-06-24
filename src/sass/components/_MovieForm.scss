@@ -223,7 +223,7 @@
 }
 
 .invalid {
-    box-shadow: 0 0 8px var(--danger-color);
+    box-shadow: 0 0 8px var(--danger-color) !important;
 }
 
 .disabled {
