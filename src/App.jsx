@@ -25,6 +25,7 @@ function App() {
 						theme='dark'
 						newestOnTop
 						transition={Flip}
+						limit={3}
 					/>
 					<BackToTop />
 				</Router>
