@@ -2,18 +2,17 @@ import { toast } from 'react-toastify';
 
 const toastValidate = msg => toast.error(msg, { toastId: 'validate' });
 
-const regexTitle = /^[\s\S]{0,50}$/;
+const regex50Chars = /^[\s\S]{0,50}$/;
 const regexDuration = /^([1-9][0-9]{0,2})$/;
 const regexUrl =
 	/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
-const regexDirector = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü,\s-]{0,100}$/;
 
 export const validateForm = (form, file, movieToEdit) => {
 	const errors = {};
 
 	if (!form.title) {
 		errors.title = 'Field required!';
-	} else if (!regexTitle.test(form.title)) {
+	} else if (!regex50Chars.test(form.title)) {
 		errors.title = 'This field should not be more than 50 characters!';
 	}
 
@@ -39,9 +38,8 @@ export const validateForm = (form, file, movieToEdit) => {
 
 	if (!form.director) {
 		errors.director = 'Field required!';
-	} else if (!regexDirector.test(form.director)) {
-		errors.director =
-			'This field should not be more than 100 alphabetic characters, including dashes optionally!';
+	} else if (!regex50Chars.test(form.director)) {
+		errors.director = 'This field should not be more than 50 characters!';
 	}
 
 	if (!form.casting) errors.casting = 'Field required!';
