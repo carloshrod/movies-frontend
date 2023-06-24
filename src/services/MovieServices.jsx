@@ -19,13 +19,9 @@ export const MovieServices = () => {
 		try {
 			setIsSending(true);
 			const res = await axios.post(API_URI, data, options);
-			const { savedMovie, msg } = res.data;
-			if (movies.length > 0) {
-				setMovies([...movies, savedMovie]);
-			} else {
-				setMovies([savedMovie]);
-			}
+			const { msg } = res.data;
 			toast.success(msg);
+			fetchMovies();
 		} catch (error) {
 			toast.error(error.response?.data?.msg || error.message);
 			console.log(error);
@@ -39,12 +35,9 @@ export const MovieServices = () => {
 		try {
 			setIsSending(true);
 			const res = await axios.put(API_URI + movieId, data, options);
-			const { updatedMovie, msg } = res.data;
-			const newData = movies.map(movie =>
-				movie.id === updatedMovie.id ? updatedMovie : movie
-			);
-			setMovies(newData);
+			const { msg } = res.data;
 			toast.success(msg);
+			fetchMovies();
 		} catch (error) {
 			toast.error(error.response?.data?.msg || error.message);
 			console.log(error);
