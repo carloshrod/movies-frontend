@@ -26,7 +26,6 @@ export const MovieServices = () => {
 				setMovies([savedMovie]);
 			}
 			toast.success(msg);
-			fetchMovies();
 		} catch (error) {
 			toast.error(error.response?.data?.msg || error.message);
 			console.log(error);
@@ -46,7 +45,6 @@ export const MovieServices = () => {
 			);
 			setMovies(newData);
 			toast.success(msg);
-			fetchMovies();
 		} catch (error) {
 			toast.error(error.response?.data?.msg || error.message);
 			console.log(error);
