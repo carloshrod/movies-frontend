@@ -9,18 +9,17 @@ const MoviesContext = createContext();
 
 const MoviesProvider = ({ children }) => {
 	const [movies, setMovies] = useState([]);
-	const [movie, setMovie] = useState([]);
+	const [movie, setMovie] = useState({});
 	const [movieToEdit, setMovieToEdit] = useState(null);
 	const { setIsLoading, setNoDataMsg } = useGlobalContext();
 
 	const fetchMovies = async () => {
 		try {
 			const res = await axios.get(API_URI);
-			const { movies } = res.data;
-			setMovies(movies);
-			if (movies.length === 0) {
-				setNoDataMsg(<span>Start to add movies!</span>);
+			if (res.status === 204) {
+				return setNoDataMsg(<span>Start to add movies!</span>);
 			}
+			setMovies(res.data);
 		} catch (error) {
 			setNoDataMsg(
 				<span className='noData--error'>

@@ -19,9 +19,13 @@ export const MovieServices = () => {
 		try {
 			setIsSending(true);
 			const res = await axios.post(API_URI, data, options);
-			const { msg } = res.data;
-			toast.success(msg);
-			fetchMovies();
+			const newMovie = res.data;
+			setMovies(
+				[newMovie, ...movies].sort(
+					(a, b) => new Date(b.release_date) - new Date(a.release_date)
+				)
+			);
+			toast.success('Movie created successfully!');
 		} catch (error) {
 			toast.error(error.response?.data?.msg || error.message);
 			console.log(error);
@@ -35,9 +39,16 @@ export const MovieServices = () => {
 		try {
 			setIsSending(true);
 			const res = await axios.put(API_URI + movieId, data, options);
-			const { msg } = res.data;
-			toast.success(msg);
-			fetchMovies();
+			if (res.status === 204) {
+				return toast.warn('No movie found to update!');
+			}
+			const updatedMovie = res.data;
+			setMovies(
+				movies
+					.map(movie => (movie.id === movieId ? updatedMovie : movie))
+					.sort((a, b) => new Date(b.release_date) - new Date(a.release_date))
+			);
+			toast.success('Movie updated successfully!');
 		} catch (error) {
 			toast.error(error.response?.data?.msg || error.message);
 			console.log(error);
@@ -61,9 +72,12 @@ export const MovieServices = () => {
 			if (resConfirm.isConfirmed) {
 				setIsSending(true);
 				const res = await axios.delete(API_URI + movieId, options);
+				if (res.status === 204) {
+					return toast.warn('No movie found to delete!');
+				}
 				const newData = movies.filter(movie => movie.id !== movieId);
 				setMovies(newData);
-				toast.success(res.data.msg);
+				toast.success('Movie deleted successfully!');
 				if (movies.length === 0) {
 					setNoDataMsg(<span>Start to add movies!</span>);
 				}
@@ -81,7 +95,17 @@ export const MovieServices = () => {
 			setIsLoading(true);
 			window.scroll({ top: 0, behavior: 'smooth' });
 			const res = await axios.get(API_URI + movieId);
-			const { movie } = res.data;
+			if (res.status === 204) {
+				setMovie(null);
+				return setNoDataMsg(
+					<span className='noData--error'>
+						It seems that movie doesn't exist.
+						<br />
+						Please try it later!
+					</span>
+				);
+			}
+			const movie = res.data;
 			setMovie(movie);
 		} catch (error) {
 			setNoDataMsg(
@@ -105,15 +129,16 @@ export const MovieServices = () => {
 			setIsLoading(true);
 			if (title) {
 				const res = await axios.get(API_URI + 'search/' + title);
-				const { foundMovies } = res.data;
-				setMovies(foundMovies);
-				if (foundMovies.length === 0) {
+				const foundMovies = res.data;
+				if (res.status === 204) {
 					setNoDataMsg(
 						<span>
 							No results for <em>{title}</em> !
 						</span>
 					);
+					return setMovies([]);
 				}
+				setMovies(foundMovies);
 			} else fetchMovies();
 		} catch (error) {
 			setNoDataMsg(

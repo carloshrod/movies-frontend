@@ -8,7 +8,7 @@ import BackButton from '../components/BackButton';
 import { useGlobalContext } from '../context/GlobalContext';
 
 function Movie() {
-	const { movie } = useMoviesContext();
+	const { movie, fetchMovies } = useMoviesContext();
 	const { isLoading } = useGlobalContext();
 	const { fetchMovie } = MovieServices();
 	const { id } = useParams();
@@ -16,6 +16,11 @@ function Movie() {
 	useEffect(() => {
 		fetchMovie(id);
 	}, []);
+
+	const handleBackButtonClick = () => {
+		if (movie) return null;
+		fetchMovies();
+	};
 
 	if (isLoading)
 		return (
@@ -26,7 +31,7 @@ function Movie() {
 
 	return (
 		<>
-			<BackButton />
+			<BackButton onClick={handleBackButtonClick} />
 			{!movie ? <NoData noDataClass='noData--movie' /> : <MovieDetails />}
 		</>
 	);
