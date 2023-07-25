@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { variants } from '../utils';
 import { useGlobalContext } from '../context/GlobalContext';
 
-function NoData({ noDataClass }) {
+function NoData({ noDataClass = '' }) {
 	const { noDataMsg } = useGlobalContext();
 
 	return (

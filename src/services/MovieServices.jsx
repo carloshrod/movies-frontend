@@ -78,9 +78,6 @@ export const MovieServices = () => {
 				const newData = movies.filter(movie => movie.id !== movieId);
 				setMovies(newData);
 				toast.success('Movie deleted successfully!');
-				if (movies.length === 0) {
-					setNoDataMsg(<span>Start to add movies!</span>);
-				}
 			}
 		} catch (error) {
 			toast.error(error.response?.data?.msg || error.message);
