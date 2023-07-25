@@ -4,12 +4,7 @@ import { variants } from '../utils';
 import { useGlobalContext } from '../context/GlobalContext';
 
 function Navbar() {
-	const { setShow } = useGlobalContext();
-
-	const showModal = () => {
-		setShow(true);
-		document.body.classList.add('hideScroll');
-	};
+	const { openModal } = useGlobalContext();
 
 	const toTop = () => {
 		window.scroll({
@@ -32,7 +27,7 @@ function Navbar() {
 					<span>MOVIES</span>
 				</div>
 			</Link>
-			<span className='navbar__link' onClick={showModal}>
+			<span className='navbar__link' onClick={openModal}>
 				Add movie
 			</span>
 		</motion.header>

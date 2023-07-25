@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { createContext, useContext } from 'react';
 
 const GlobalContext = createContext();
@@ -9,9 +9,20 @@ const GlobalProvider = ({ children }) => {
 	const [isSending, setIsSending] = useState(false);
 	const [noDataMsg, setNoDataMsg] = useState(null);
 
+	const openModal = () => {
+		setShow(true);
+		document.body.classList.add('hideScroll');
+	};
+
+	const closeModal = () => {
+		setShow(false);
+		document.body.classList.remove('hideScroll');
+	};
+
 	const data = {
 		show,
-		setShow,
+		openModal,
+		closeModal,
 		isLoading,
 		setIsLoading,
 		isSending,

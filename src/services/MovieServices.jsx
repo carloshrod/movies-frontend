@@ -12,7 +12,7 @@ const options = {
 
 export const MovieServices = () => {
 	const { movies, setMovies, setMovie, fetchMovies } = useMoviesContext();
-	const { setShow, setIsLoading, setIsSending, setNoDataMsg } =
+	const { closeModal, setIsLoading, setIsSending, setNoDataMsg } =
 		useGlobalContext();
 
 	const createMovie = async data => {
@@ -31,7 +31,7 @@ export const MovieServices = () => {
 			console.log(error);
 		} finally {
 			setIsSending(false);
-			setShow(false);
+			closeModal();
 		}
 	};
 
@@ -54,7 +54,7 @@ export const MovieServices = () => {
 			console.log(error);
 		} finally {
 			setIsSending(false);
-			setShow(false);
+			closeModal();
 		}
 	};
 

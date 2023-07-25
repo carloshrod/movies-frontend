@@ -21,7 +21,7 @@ const initialForm = {
 
 function MovieForm() {
 	const [focused, setFocused] = useState(false);
-	const { setShow } = useGlobalContext();
+	const { show, closeModal } = useGlobalContext();
 	const { movieToEdit } = useMoviesContext();
 	const {
 		form,
@@ -39,18 +39,16 @@ function MovieForm() {
 	useEffect(() => {
 		const errors = validateForm(form, file, movieToEdit);
 		setErrors(errors);
-	}, [form, file]);
 
-	const closeModal = () => {
-		setShow(false);
-		handleReset();
-		document.body.classList.remove('hideScroll');
-	};
+		if (!show) {
+			handleReset();
+		}
+	}, [form, file, show]);
 
 	const isFormOk = Object.keys(errors).length === 0;
 
 	return (
-		<section className='main'>
+		<section className='main' onClick={e => e.stopPropagation()}>
 			<h3 className='main__title'>{formTitle} Movie</h3>
 			<form
 				className='main__movieForm'

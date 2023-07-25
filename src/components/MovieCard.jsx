@@ -10,7 +10,7 @@ function MovieCard({ movie }) {
 	let { id, title, rating, release_date, poster } = movie || {};
 	const navigate = useNavigate();
 	const { setMovieToEdit } = useMoviesContext();
-	const { setShow, setIsLoading } = useGlobalContext();
+	const { openModal, setIsLoading } = useGlobalContext();
 	const { deleteMovie } = MovieServices();
 
 	const goToMovieDetails = () => {
@@ -23,8 +23,7 @@ function MovieCard({ movie }) {
 
 	const handleEdit = () => {
 		setMovieToEdit(movie);
-		setShow(true);
-		document.body.classList.add('hideScroll');
+		openModal();
 	};
 
 	const handleDelete = () => {
