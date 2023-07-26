@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+
     span {
         position: relative;
         top: -120px;
@@ -11,16 +12,34 @@
         border: 2px solid var(--primary-color);
         border-radius: 5px;
         padding: 2rem 3rem;
+
         em {
             color: var(--primary-color);
-        }        
+        }
     }
+
     &--movie {
         span {
             top: 0;
         }
     }
+
     &--error {
         border: 2px solid var(--danger-color) !important;
+    }
+
+    &--info {
+        font-size: 1.5rem !important;
+        font-weight: 300;
+        border: 2px solid var(--primary-color) !important;
+
+        div {
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        i {
+            margin: 0 .5rem 0 .5rem;
+        }
     }
 }

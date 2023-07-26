@@ -6,6 +6,7 @@ export { default as MovieDetails } from './MovieDetails';
 export { default as Modal } from './Modal';
 export { default as MovieForm } from './MovieForm';
 export { default as Input } from './Input';
+export { default as InputFile } from './InputFile';
 export { default as Loader } from './Loader';
 export { default as NoData } from './NoData';
 export { default as Search } from './Search';

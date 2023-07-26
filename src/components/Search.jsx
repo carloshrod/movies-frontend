@@ -4,7 +4,7 @@ import { MovieServices } from '../services/MovieServices';
 import { motion } from 'framer-motion';
 import { variants } from '../utils';
 
-const initialForm = { title: '' };
+const initialForm = { query: '' };
 
 function Search() {
 	const { movies } = useMoviesContext();
@@ -27,10 +27,10 @@ function Search() {
 			<form onSubmit={handleSubmit}>
 				<input
 					className='form-control'
-					name='title'
+					name='query'
 					placeholder='Search...'
 					type='text'
-					value={form.title}
+					value={form.query}
 					onChange={handleInputChange}
 				/>
 				<button>&#128270;</button>

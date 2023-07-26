@@ -122,20 +122,21 @@ export const MovieServices = () => {
 
 	const searchMovies = async form => {
 		try {
-			const { title } = form;
+			const { query } = form;
 			setIsLoading(true);
-			if (title) {
-				const res = await axios.get(API_URI + 'search/' + title);
+			if (query) {
+				const res = await axios.get(API_URI + 'search/' + query);
 				const foundMovies = res.data;
 				if (res.status === 204) {
 					setNoDataMsg(
 						<span>
-							No results for <em>{title}</em> !
+							No results for <em>{query}</em> !
 						</span>
 					);
 					return setMovies([]);
 				}
 				setMovies(foundMovies);
+				setNoDataMsg(null);
 			} else fetchMovies();
 		} catch (error) {
 			setNoDataMsg(

@@ -1,11 +1,9 @@
-import { useForm } from '../hooks/useForm';
-import { Input } from './';
-import { inputProps, textAreaProps } from '../utils';
-import { validateForm } from '../utils/validateMovie';
 import { useEffect, useState } from 'react';
+import { Input, InputFile } from './';
+import { useForm } from '../hooks/useForm';
 import { useGlobalContext } from '../context/GlobalContext';
-import InputFile from './InputFile';
 import { useMoviesContext } from '../context/MoviesContext';
+import { inputProps, textAreaProps, validateForm } from '../utils';
 
 const initialForm = {
 	title: '',
