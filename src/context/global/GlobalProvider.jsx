@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { createContext, useContext } from 'react';
-
-const GlobalContext = createContext();
+import GlobalContext from './GlobalContext';
 
 const GlobalProvider = ({ children }) => {
 	const [show, setShow] = useState(false);
@@ -36,5 +34,4 @@ const GlobalProvider = ({ children }) => {
 	);
 };
 
-export const useGlobalContext = () => useContext(GlobalContext);
-export { GlobalProvider };
+export default GlobalProvider;

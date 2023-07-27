@@ -1,11 +1,10 @@
 import axios from 'axios';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { config } from '../config';
-import { useGlobalContext } from './GlobalContext';
+import { useEffect, useState } from 'react';
+import { config } from '../../config';
+import { useGlobalContext } from '../../hooks';
+import MoviesContext from './MoviesContext';
 
 const { API_URI } = config;
-
-const MoviesContext = createContext();
 
 const MoviesProvider = ({ children }) => {
 	const [movies, setMovies] = useState([]);
@@ -73,5 +72,4 @@ const MoviesProvider = ({ children }) => {
 	);
 };
 
-export const useMoviesContext = () => useContext(MoviesContext);
-export { MoviesProvider };
+export default MoviesProvider;
