@@ -5,15 +5,11 @@ import { PuffLoader, RingLoader } from 'react-spinners';
 
 function Movies() {
 	const { movies } = useMoviesContext();
-	const { show, isLoading, isSending, noDataMsg, setNoDataMsg } =
-		useGlobalContext();
+	const { show, isLoading, isSending, noData, setNoData } = useGlobalContext();
 
 	useEffect(() => {
-		if (
-			movies.length === 0 &&
-			!noDataMsg?.props?.children[0].includes('No results')
-		) {
-			setNoDataMsg(<span>Start to add movies!</span>);
+		if (movies.length === 0 && noData?.state !== 'no result') {
+			setNoData({ msg: 'Start to add movies!' });
 		}
 	}, [movies]);
 

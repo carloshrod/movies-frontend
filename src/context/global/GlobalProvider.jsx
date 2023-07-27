@@ -5,7 +5,7 @@ const GlobalProvider = ({ children }) => {
 	const [show, setShow] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 	const [isSending, setIsSending] = useState(false);
-	const [noDataMsg, setNoDataMsg] = useState(null);
+	const [noData, setNoData] = useState({ msg: '', state: '' });
 
 	const openModal = () => {
 		setShow(true);
@@ -25,8 +25,8 @@ const GlobalProvider = ({ children }) => {
 		setIsLoading,
 		isSending,
 		setIsSending,
-		noDataMsg,
-		setNoDataMsg,
+		noData,
+		setNoData,
 	};
 
 	return (

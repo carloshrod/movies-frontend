@@ -11,7 +11,7 @@ const options = {
 
 export const MovieServices = () => {
 	const { movies, setMovies, setMovie, fetchMovies } = useMoviesContext();
-	const { closeModal, setIsLoading, setIsSending, setNoDataMsg } =
+	const { closeModal, setIsLoading, setIsSending, setNoData } =
 		useGlobalContext();
 
 	const createMovie = async data => {
@@ -93,24 +93,15 @@ export const MovieServices = () => {
 			const res = await axios.get(API_URI + movieId);
 			if (res.status === 204) {
 				setMovie(null);
-				return setNoDataMsg(
-					<span className='noData--error'>
-						It seems that movie doesn't exist.
-						<br />
-						Please try it later!
-					</span>
-				);
+				return setNoData({
+					msg: "It seems that movie doesn't exist.",
+					state: 'error',
+				});
 			}
 			const movie = res.data;
 			setMovie(movie);
 		} catch (error) {
-			setNoDataMsg(
-				<span className='noData--error'>
-					Oops, there's an error.
-					<br />
-					Please try it later!
-				</span>
-			);
+			setNoData({ msg: "Oops, there's an error.", state: 'error' });
 			console.error(error);
 		} finally {
 			setTimeout(() => {
@@ -126,24 +117,21 @@ export const MovieServices = () => {
 				const res = await axios.get(API_URI + 'search/' + query);
 				const foundMovies = res.data;
 				if (res.status === 204) {
-					setNoDataMsg(
-						<span>
-							No results for <em>{query}</em> !
-						</span>
-					);
+					setNoData({
+						msg: (
+							<>
+								No results for <em>{query}</em>!
+							</>
+						),
+						state: 'no result',
+					});
 					return setMovies([]);
 				}
 				setMovies(foundMovies);
-				setNoDataMsg(null);
+				setNoData(null);
 			} else fetchMovies();
 		} catch (error) {
-			setNoDataMsg(
-				<span className='noData--error'>
-					Oops, there's an error.
-					<br />
-					Please try it later!
-				</span>
-			);
+			setNoData({ msg: "Oops, there's an error.", state: 'error' });
 			console.error(error);
 		} finally {
 			setTimeout(() => {

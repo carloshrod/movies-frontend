@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { config } from '../../config';
 import { useGlobalContext } from '../../hooks';
 import MoviesContext from './MoviesContext';
+import InfoMsg from '../../components/ui/InfoMsg';
 
 const { API_URI } = config;
 
@@ -10,7 +11,7 @@ const MoviesProvider = ({ children }) => {
 	const [movies, setMovies] = useState([]);
 	const [movie, setMovie] = useState({});
 	const [movieToEdit, setMovieToEdit] = useState(null);
-	const { setIsLoading, setNoDataMsg } = useGlobalContext();
+	const { setIsLoading, setNoData } = useGlobalContext();
 
 	const fetchMovies = async () => {
 		try {
@@ -18,31 +19,17 @@ const MoviesProvider = ({ children }) => {
 			setTimeout(() => controller.abort(), 5000);
 			const res = await axios.get(API_URI, { signal: controller.signal });
 			if (res.status === 204) {
-				return setNoDataMsg(<span>Start to add movies!</span>);
+				return setNoData({ msg: 'Start to add movies!' });
 			}
 			setMovies(res.data);
-			setNoDataMsg(null);
+			setNoData({ msg: '', state: '' });
 		} catch (error) {
-			setNoDataMsg(
-				<span className='noData--error'>
-					Oops, there's an error.
-					<br />
-					Please try it later!
-				</span>
-			);
+			setNoData({
+				msg: `Oops, there's an error.`,
+				state: 'error',
+			});
 			if (error.code === 'ERR_CANCELED') {
-				setNoDataMsg(
-					<span className='noData--info'>
-						<i className='fa-solid fa-circle-exclamation' />
-						Backend of this app is running on a render.com free instance, so it
-						might be inactive. This will cause a delay in the response of the
-						first request after a period of inactivity while the instance is up
-						again.
-						<i className='fa-solid fa-circle-exclamation' />
-						<br />
-						<div>Please try again in 30 seconds!</div>
-					</span>
-				);
+				setNoData({ msg: <InfoMsg />, state: error.code });
 			}
 			console.error(error);
 		} finally {
