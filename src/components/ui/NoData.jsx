@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
-import { variants } from '../utils';
-import { useGlobalContext } from '../context/GlobalContext';
+import { variants } from '../../utils';
+import { useGlobalContext } from '../../hooks';
 
 function NoData({ noDataClass = '' }) {
 	const { noDataMsg } = useGlobalContext();

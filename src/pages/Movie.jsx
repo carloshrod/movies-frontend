@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { MovieDetails, Loader, NoData } from '../components';
-import { useMoviesContext } from '../context/MoviesContext';
 import { PuffLoader } from 'react-spinners';
 import { useParams } from 'react-router-dom';
 import { MovieServices } from '../services/MovieServices';
-import BackButton from '../components/BackButton';
-import { useGlobalContext } from '../context/GlobalContext';
+import { BackButton } from '../components';
+import { useMoviesContext, useGlobalContext } from '../hooks';
 
 function Movie() {
 	const { movie, fetchMovies } = useMoviesContext();

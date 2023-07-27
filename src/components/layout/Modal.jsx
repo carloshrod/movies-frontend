@@ -1,5 +1,5 @@
-import { MovieForm } from './';
-import { useGlobalContext } from '../context/GlobalContext';
+import { MovieForm } from '..';
+import { useGlobalContext } from '../../hooks';
 
 function Modal() {
 	const { show, closeModal } = useGlobalContext();

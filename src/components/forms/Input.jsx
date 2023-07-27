@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useGlobalContext } from '../context/GlobalContext';
-import { inputClasses, languages, ratings } from '../utils';
+import { inputClasses, languages, ratings } from '../../utils';
+import { useGlobalContext } from '../../hooks';
 
 function Input({
 	id,

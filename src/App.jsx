@@ -2,8 +2,7 @@ import './Styles.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar, Container, Modal, BackToTop } from './components';
 import { Movies, Movie } from './pages';
-import { GlobalProvider } from './context/GlobalContext';
-import { MoviesProvider } from './context/MoviesContext';
+import { GlobalProvider, MoviesProvider } from './context';
 import { ToastContainer, Flip } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

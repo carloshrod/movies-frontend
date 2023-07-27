@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DEFAULT_IMAGE from '../assets/default-img.png';
-import { useMoviesContext } from '../context/MoviesContext';
+import useMoviesContext from './useMoviesContext';
 import { MovieServices } from '../services/MovieServices';
 import { formDataMovie } from '../utils';
 import { validateCreateMovie, validateEditMovie } from '../utils';
 
-export const useForm = initialForm => {
+const useForm = initialForm => {
 	const [form, setForm] = useState(initialForm);
 	const [file, setFile] = useState(null);
 	const [errors, setErrors] = useState({});
@@ -87,3 +87,5 @@ export const useForm = initialForm => {
 		handleSubmit,
 	};
 };
+
+export default useForm;

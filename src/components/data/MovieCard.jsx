@@ -1,10 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGlobalContext } from '../context/GlobalContext';
-import { useMoviesContext } from '../context/MoviesContext';
-import { MovieServices } from '../services/MovieServices';
+import { useGlobalContext, useMoviesContext } from '../../hooks';
+import { MovieServices } from '../../services/MovieServices';
 import { motion } from 'framer-motion';
-import { variants } from '../utils';
+import { variants } from '../../utils';
 
 function MovieCard({ movie }) {
 	let { id, title, rating, release_date, poster } = movie || {};

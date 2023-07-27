@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { useGlobalContext } from '../context/GlobalContext';
-import { useMoviesContext } from '../context/MoviesContext';
+import { useGlobalContext, useMoviesContext } from '../../hooks';
 
 function InputFile({ focused, setFocused, errors, pathImage, file, onChange }) {
 	const { show } = useGlobalContext();

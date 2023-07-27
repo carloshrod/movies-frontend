@@ -2,8 +2,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { config } from '../config';
-import { useMoviesContext } from '../context/MoviesContext';
-import { useGlobalContext } from '../context/GlobalContext';
+import { useMoviesContext, useGlobalContext } from '../hooks';
 
 const { API_URI } = config;
 const options = {
@@ -120,9 +119,8 @@ export const MovieServices = () => {
 		}
 	};
 
-	const searchMovies = async form => {
+	const searchMovies = async query => {
 		try {
-			const { query } = form;
 			setIsLoading(true);
 			if (query) {
 				const res = await axios.get(API_URI + 'search/' + query);

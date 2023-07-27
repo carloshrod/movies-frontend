@@ -1,21 +1,21 @@
-import { useMoviesContext } from '../context/MoviesContext';
-import { useForm } from '../hooks/useForm';
-import { MovieServices } from '../services/MovieServices';
+import { useMoviesContext } from '../../hooks';
+import { MovieServices } from '../../services/MovieServices';
 import { motion } from 'framer-motion';
-import { variants } from '../utils';
-
-const initialForm = { query: '' };
+import { variants } from '../../utils';
+import { useState } from 'react';
 
 function Search() {
+	const [query, setQuery] = useState('');
 	const { movies } = useMoviesContext();
 	const range = movies?.length;
-	const { form, handleInputChange } = useForm(initialForm);
 	const { searchMovies } = MovieServices();
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		searchMovies(form);
+		searchMovies(query);
 	};
+
+	const handleChange = e => setQuery(e.target.value);
 
 	return (
 		<motion.div
@@ -30,8 +30,8 @@ function Search() {
 					name='query'
 					placeholder='Search...'
 					type='text'
-					value={form.query}
-					onChange={handleInputChange}
+					value={query}
+					onChange={handleChange}
 				/>
 				<button>&#128270;</button>
 			</form>

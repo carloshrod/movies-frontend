@@ -1,6 +1,6 @@
-import { useMoviesContext } from '../context/MoviesContext';
+import { useMoviesContext } from '../../hooks';
 import { motion } from 'framer-motion';
-import { variants } from '../utils';
+import { variants } from '../../utils';
 
 function MovieDetails() {
 	const { movie } = useMoviesContext();

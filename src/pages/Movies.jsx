@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { MoviesGrid, Loader, NoData, Search } from '../components';
-import { useGlobalContext } from '../context/GlobalContext';
-import { useMoviesContext } from '../context/MoviesContext';
+import { useGlobalContext, useMoviesContext } from '../hooks';
 import { PuffLoader, RingLoader } from 'react-spinners';
 
 function Movies() {
