@@ -1,6 +1,6 @@
 import './Styles.scss';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navbar, Container, Modal, BackToTop } from './components';
+import { Navbar, Container, Modal, BackToTop, Footer } from './components';
 import { Movies, Movie } from './pages';
 import { GlobalProvider, MoviesProvider } from './context';
 import { ToastContainer, Flip } from 'react-toastify';
@@ -18,6 +18,7 @@ function App() {
 							<Route path='/movie/:id' element={<Movie />} />
 						</Routes>
 					</Container>
+					<Footer />
 					<Modal />
 					<ToastContainer
 						position='bottom-right'

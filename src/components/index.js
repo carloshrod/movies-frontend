@@ -2,6 +2,7 @@ export { default as Navbar } from './layout/Navbar';
 export { default as Container } from './layout/Container';
 export { default as Modal } from './layout/Modal';
 export { default as MoviesGrid } from './layout/MoviesGrid';
+export { default as Footer } from './layout/Footer';
 
 export { default as MovieForm } from './forms/MovieForm';
 export { default as Input } from './forms/Input';
